@@ -19,4 +19,8 @@ test {
     useJUnitPlatform()
 }
 
+dependencies {
+    compile 'org.jsoup:jsoup:1.13.1'
+}
+
 mainClassName = 'Main'
