@@ -1,5 +1,7 @@
 package scrapper;
 
+import java.sql.SQLException;
+
 public interface Scrapper {
-    void analyze();
+    void analyze() throws SQLException, ClassNotFoundException;
 }

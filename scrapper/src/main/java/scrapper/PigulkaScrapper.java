@@ -1,12 +1,14 @@
 package scrapper;
 
 import database.Drug;
+import database.DrugDAO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,17 +16,22 @@ import java.util.Map;
 public class PigulkaScrapper implements Scrapper {
 
     private static final String WEBSITE_URL = "https://pigulka.com.ua/";
-    private static final int MAXIMUM_PAGES = 10;
+    private static final int MAXIMUM_PAGES = 2;
 
     @Override
-    public void analyze() {
+    public void analyze() throws SQLException, ClassNotFoundException {
+        ArrayList<Drug> drugs = new ArrayList<>();
 
         for (int i = 0; i < MAXIMUM_PAGES; i++) {
             ArrayList<String> drugUrls = findDrugs("https://pigulka.com.ua/ukraina" + (i > 0 ? "?page=" + (i - 1) : ""));
 
             for (String url : drugUrls) {
-                parseDrug(url);
+                drugs.add(parseDrug(url));
             }
+        }
+
+        for (Drug drug : drugs) {
+            DrugDAO.insert(drug);
         }
     }
 
@@ -40,7 +47,6 @@ public class PigulkaScrapper implements Scrapper {
 
         Elements drugUrlElements = doc.select(".pagereloadhref");
         for (Element url : drugUrlElements) {
-            System.out.println("DEBUG: " + url.attr("href"));
             drugUrls.add(WEBSITE_URL + url.attr("href"));
         }
 
@@ -68,8 +74,6 @@ public class PigulkaScrapper implements Scrapper {
         drug.setType(params.get("Фармакотерапевтична група"));
         drug.setImageUrl("");
         drug.setStoreUrl(url);
-
-        System.out.println(drug);
 
         return drug;
     }
