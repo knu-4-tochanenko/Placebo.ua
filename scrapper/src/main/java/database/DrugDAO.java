@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DrugDAO {
-    public static void insert(DrugEntity drug) throws SQLException, ClassNotFoundException {
+    public static void insert(Drug drug) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.initDB();
 
         String query = "INSERT INTO Drug (id, name, type, description, price, store_url, image_url) VALUES(DEFAULT, ?, ?, ?, ?, ?, ?)";
