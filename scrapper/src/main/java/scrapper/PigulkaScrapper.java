@@ -7,18 +7,44 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PigulkaScrapper implements Scrapper {
 
+    private static final String WEBSITE_URL = "https://pigulka.com.ua/";
+    private static final int MAXIMUM_PAGES = 10;
+
     @Override
     public void analyze() {
-        parseDrug("https://pigulka.com.ua/lz/l-glutaminova-kislota-0");
+
+        for (int i = 0; i < MAXIMUM_PAGES; i++) {
+            ArrayList<String> drugUrls = findDrugs("https://pigulka.com.ua/ukraina" + (i > 0 ? "?page=" + (i - 1) : ""));
+
+            for (String url : drugUrls) {
+                parseDrug(url);
+            }
+        }
     }
 
-    private String[] findDrugs(String pageUrl) {
-        return null;
+    private ArrayList<String> findDrugs(String pageUrl) {
+        ArrayList<String> drugUrls = new ArrayList<>();
+
+        Document doc = null;
+        try {
+            doc = Jsoup.connect(pageUrl).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Elements drugUrlElements = doc.select(".pagereloadhref");
+        for (Element url : drugUrlElements) {
+            System.out.println("DEBUG: " + url.attr("href"));
+            drugUrls.add(WEBSITE_URL + url.attr("href"));
+        }
+
+        return drugUrls;
     }
 
     private Drug parseDrug(String url) {
@@ -29,12 +55,10 @@ public class PigulkaScrapper implements Scrapper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        System.out.println(doc.title());
-        Elements newsHeadlines = doc.select(".field--label-inline");
+        Elements propertiesInDom = doc.select(".field--label-inline");
         Map<String, String> params = new HashMap<>();
-        for (Element headline : newsHeadlines) {
-//            System.out.println(headline.child(0).html() + " - " + headline.child(1).html());
-            params.put(headline.child(0).html(), headline.child(1).html());
+        for (Element property : propertiesInDom) {
+            params.put(property.child(0).html(), property.child(1).html());
         }
 
         Drug drug = new Drug();
@@ -46,6 +70,7 @@ public class PigulkaScrapper implements Scrapper {
         drug.setStoreUrl(url);
 
         System.out.println(drug);
+
         return drug;
     }
 }
