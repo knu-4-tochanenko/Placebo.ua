@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import lombok.RequiredArgsConstructor;
 import ua.placebo.api.dto.DrugDto;
 import ua.placebo.api.dto.DrugFilter;
@@ -23,5 +25,10 @@ public class DefaultDrugService implements DrugService {
   public Page<DrugDto> searchDrugs(DrugFilter filter, Pageable pageable) {
     return drugRepository.findDrugs(filter, pageable)
         .map(drugMapper::toDto);
+  }
+
+  @Override
+  public List<String> getDrugTypes() {
+    return drugRepository.findAllTypes();
   }
 }

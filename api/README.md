@@ -117,3 +117,16 @@ Response body:
     "message": "Something went wrong..."
 }
 ```
+### Get drug types
+Request url:
+```
+/drugs/types
+```
+Response:
+```json
+[
+    "HEART",
+    "MENTAL",
+    "DIGESTIVE"
+]
+```

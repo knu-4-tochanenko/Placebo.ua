@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import lombok.RequiredArgsConstructor;
@@ -23,5 +25,10 @@ public class DrugController {
   @GetMapping
   public Page<DrugDto> searchDrugs(@RequestBody @Valid DrugFilter filter, Pageable pageable) {
     return drugService.searchDrugs(filter, pageable);
+  }
+
+  @GetMapping("/types")
+  public List<String> getDrugTypes() {
+    return drugService.getDrugTypes();
   }
 }
