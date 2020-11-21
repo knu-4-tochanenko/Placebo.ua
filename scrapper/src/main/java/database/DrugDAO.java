@@ -8,7 +8,7 @@ public class DrugDAO {
     public static void insert(Drug drug) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.initDB();
 
-        String query = "INSERT INTO Drug (id, name, type, description, price, store_url, image_url) VALUES(DEFAULT, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Drug (name, type, description, price, store_url, image_url) VALUES(?, ?, ?, ?, ?, ?)";
 
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, drug.getName());
@@ -17,6 +17,8 @@ public class DrugDAO {
         statement.setDouble(4, drug.getPrice());
         statement.setString(5, drug.getStoreUrl());
         statement.setString(6, drug.getImageUrl());
+
+        System.out.println(statement.toString());
 
         statement.executeUpdate();
         connection.close();
