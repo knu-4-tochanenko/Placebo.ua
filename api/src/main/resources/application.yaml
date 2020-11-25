@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5439/placebo
+    username: postgres
+    password: password
+
+server:
+  port: 8989
