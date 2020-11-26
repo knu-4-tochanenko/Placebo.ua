@@ -6,6 +6,7 @@
   
 
   .example-card {
+    position:relative;
     margin-left: 5px;
     text-align: center;
     max-width: 300px;
@@ -30,20 +31,31 @@
     width: 50%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
     height: 70%;
   }
+
   .container {
     padding-top: 0%;
    max-width: initial;
   }
 
 
-  mat-grid-tile:hover {
-    background:#53ea93;
-  }
+  
 
   .info{
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+    top:0;
+    background:rgba(106, 231, 183, 0.9);
+    padding:5px;
     display: none;
   }
-  mat-grid-tile:hover .info{
+
+  .info, .p {
+   font-size: 15pt;
+  }
+
+  .example-card:hover .info{
     display: block;
     margin-left: 10px;
     font-size: 10px;
