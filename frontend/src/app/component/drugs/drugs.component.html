@@ -1,10 +1,13 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
 <p>
-  <mat-toolbar color="primary" style="height: 50px; font-size: 18px; "> 
+  <mat-toolbar color="primary" style="height: 50px; font-size: 18px; font-family: 'Raleway', sans-serif; "> 
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="font-size: 15px;">
       <mat-icon style="font-size: 15px;">menu</mat-icon>
     </button>
     <span><a routerLink="/main" routerLinkActive="active" style="color: white;">Placebo</a></span>
-    <span style="margin-left: 20px;">Про нас</span>
+    <span style="margin-left: 20px;"><a routerLink="/about" routerLinkActive="active" style="color: white;">Про нас</a></span>
     <span style="margin-left: 20px; margin-right: 20px;">Ліки</span>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
@@ -29,8 +32,16 @@
 <p>- СПОРТИВНОЕ ПИТАНИЕ И ДИЕТЫ</p><br>
 
 
+
   </mat-drawer>
   <mat-drawer-content>
+    <div class="input-group" style="margin-left: 10px; width: 600px;">
+      <input type="text" class="form-control" placeholder="Введіть назву лікарського засобу" id="txtSearch" />
+      <div class="input-group-btn">
+          <button class="btn btn-primary" type="button" style="margin-left: 10px;">Пошук</button>
+          </div>
+          </div>
+    
     <mat-paginator [length]="100"
               [pageSize]="10"
               [pageSizeOptions]="[5, 10, 25, 100]">
@@ -42,7 +53,7 @@
         <mat-card-header>
           <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="https://liki24.com/image/cache/catalog/product/found/14016-5-ftoruracil-ebeve-konc-dp-inf-r-ra-500-mg-amp-10-ml-ebewe-pharma-362x362.jpg?30112018" alt="Photo of a Shiba Inu" style="width: 200px; height: 200px;">
+        <img mat-card-image src="https://liki24.com/image/cache/catalog/product/found/14016-5-ftoruracil-ebeve-konc-dp-inf-r-ra-500-mg-amp-10-ml-ebewe-pharma-362x362.jpg?30112018" alt="Photo of a Shiba Inu" style="width: 150px; height: 150px;">
       </mat-card>
       <div class="info"><p>5-фторурацил "эбеве" описание
         Лекарственное средство: 5-ФТОРУРАЦИЛ "ЭБЕВЕ" (5-FLUOROURACIL "EBEWE")

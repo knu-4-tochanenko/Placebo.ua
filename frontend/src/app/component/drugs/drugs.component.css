@@ -32,6 +32,10 @@
     font-size: 10px;
   }
 
+  p, h1, h2 {
+    font-family: 'Raleway', sans-serif; 
+  }
+
   .mat-toolbar.mat-primary {
     background: #343837;
     color: rgb(255, 255, 255);
