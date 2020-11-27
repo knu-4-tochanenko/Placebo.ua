@@ -1,9 +1,18 @@
 # API
-## Database
-### Run in Docker
+## Run
+### Requirements
+- Docker 19.03.13
+- Java 11.0.9.hs-adpt
+### Launch database in Docker
 ```
 docker run -p 5439:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=placebo -d postgres:9.6.1
 ```
+The database will be running on port 5439
+### Start server
+```
+./gradlew bootRun
+```
+The server will be running on port 8989
 
 ## Endpoints
 ### Get drugs
