@@ -1,5 +1,6 @@
 package scrapper;
 
+import config.Config;
 import database.Drug;
 import database.DrugDAO;
 import org.jsoup.Jsoup;
@@ -16,22 +17,16 @@ import java.util.Map;
 public class PigulkaScrapper implements Scrapper {
 
     private static final String WEBSITE_URL = "https://pigulka.com.ua/";
-    private static final int MAXIMUM_PAGES = 2;
+    private static final int MAXIMUM_PAGES = Config.PAGES;
 
     @Override
     public void analyze() throws SQLException, ClassNotFoundException {
-        ArrayList<Drug> drugs = new ArrayList<>();
-
         for (int i = 0; i < MAXIMUM_PAGES; i++) {
             ArrayList<String> drugUrls = findDrugs("https://pigulka.com.ua/ukraina" + (i > 0 ? "?page=" + (i - 1) : ""));
 
             for (String url : drugUrls) {
-                drugs.add(parseDrug(url));
+                DrugDAO.insert(parseDrug(url));
             }
-        }
-
-        for (Drug drug : drugs) {
-            DrugDAO.insert(drug);
         }
     }
 

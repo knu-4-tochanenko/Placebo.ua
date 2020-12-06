@@ -1,5 +1,6 @@
 package scrapper;
 
+import config.Config;
 import database.Drug;
 import database.DrugDAO;
 import org.jsoup.Jsoup;
@@ -17,7 +18,7 @@ import java.util.Map;
 public class AddScrapper implements Scrapper {
 
     private static final String WEBSITE_URL = "https://www.add.ua/";
-    private static final int MAXIMUM_PAGES = 2;
+    private static final int MAXIMUM_PAGES = Config.PAGES;
 
     public static boolean isValid(String url) {
         try {
@@ -30,20 +31,12 @@ public class AddScrapper implements Scrapper {
 
     @Override
     public void analyze() throws SQLException, ClassNotFoundException {
-        ArrayList<Drug> drugs = new ArrayList<>();
-
         for (int i = 0; i < MAXIMUM_PAGES; i++) {
             ArrayList<String> drugUrls = findDrugs("https://www.add.ua/medicamenti/?dir=asc&order=name" + (i > 0 ? "&p=" + (i + 1) : ""));
 
-            System.out.println(drugUrls);
-
             for (String url : drugUrls) {
-                drugs.add(parseDrug(url));
+                DrugDAO.insert(parseDrug(url));
             }
-        }
-
-        for (Drug drug : drugs) {
-            DrugDAO.insert(drug);
         }
     }
 
@@ -69,9 +62,6 @@ public class AddScrapper implements Scrapper {
     }
 
     private Drug parseDrug(String url) {
-
-        System.out.println(url);
-
         Document doc = null;
         try {
             doc = Jsoup.connect(url).get();
@@ -90,8 +80,6 @@ public class AddScrapper implements Scrapper {
             }
             params.put(property.child(0).html(), value);
         }
-
-        System.out.println(params);
 
         String title = doc.title();
         Drug drug = new Drug();

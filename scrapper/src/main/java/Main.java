@@ -6,9 +6,13 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
-        Apteka911Scrapper scrapper = new Apteka911Scrapper();
+        AddScrapper addScrapper = new AddScrapper();
+        Apteka911Scrapper apteka911Scrapper = new Apteka911Scrapper();
+        PigulkaScrapper pigulkaScrapper = new PigulkaScrapper();
         try {
-            scrapper.analyze();
+            addScrapper.analyze();
+            apteka911Scrapper.analyze();
+            pigulkaScrapper.analyze();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
