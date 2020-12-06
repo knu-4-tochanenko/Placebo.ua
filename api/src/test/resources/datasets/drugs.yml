@@ -1,0 +1,36 @@
+drug:
+  - id: 1000
+    name: 'Corlanor'
+    type: 'HEART'
+    description: 'Drug that cures heart diseases'
+    price: 10.55
+    store_url: 'https://www.northwestpharmacy.com/product/corlanor'
+    image_url: 'https://1au3b422k9zdqzddw3my51gg-wpengine.netdna-ssl.com/wp-content/uploads/sites/7/2018/12/1374b6c633ab4d50968e28192aeb5d14-Corlanor-694x848.jpg'
+  - id: 1001
+    name: 'Abilify'
+    type: 'MENTAL'
+    description: 'Drug that cures mental diseases'
+    price: 52
+    store_url: 'https://www.northwestpharmacy.com/product/abilify'
+    image_url: 'https://d.newsweek.com/en/full/269301/09-09-abilify.jpg?w=1600&h=1200&q=88&f=2501af28b5bf35ecbbbd77ff77491aachttps://d.newsweek.com/en/full/269301/09-09-abilify.jpg?w=1600&h=1200&q=88&f=2501af28b5bf35ecbbbd77ff77491aac'
+  - id: 1002
+    name: 'Latuda'
+    type: 'MENTAL'
+    description: 'Drug that cures mental diseases'
+    price: 12.5
+    store_url: 'https://www.northwestpharmacy.com/product/latuda'
+    image_url: 'https://www.consumeralertnow.com/images/Latuda.jpg'
+  - id: 1003
+    name: 'Bystolic'
+    type: 'HEART'
+    description: 'Drug that cures heart diseases'
+    price: 64.4
+    store_url: 'https://www.northwestpharmacy.com/product/bystolic'
+    image_url: 'https://www.bystolicsavings.com/images/bystolic-bottle.png'
+  - id: 1004
+    name: 'Entocort'
+    type: 'DIGESTIVE'
+    description: 'Drug that cures digestive diseases'
+    price: 6.75
+    store_url: 'https://www.northwestpharmacy.com/product/entocort'
+    image_url: 'https://pendopharm.com/wp-content/uploads/2016/04/entocort-capsules-352x345.jpg'
