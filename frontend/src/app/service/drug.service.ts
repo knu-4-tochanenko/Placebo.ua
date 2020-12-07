@@ -39,4 +39,8 @@ export class DrugService {
     return this.http.get(API + 'drugs/types');
   }
 
+  getById(id: any): Observable<any> {
+    return this.http.get(API + '/drug?id=' + id, httpOptions);
+  }
+
 }

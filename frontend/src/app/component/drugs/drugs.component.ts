@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import {Subscription} from "rxjs";
+import { Subscription } from "rxjs";
 import { DrugService } from 'src/app/service/drug.service';
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 interface Drugs {
   value: string;
@@ -28,22 +28,22 @@ export class DrugsComponent implements OnInit {
   private typesSub: Subscription;
 
   drugs: Drugs[] = [
-    {value: 'Ампулы', viewValue: 'Ампулы'},
-    {value: 'Блистер', viewValue: 'Блистер'},
-    {value: 'Драже', viewValue: 'Драже'},
-    {value: 'Капли', viewValue: 'Капли'},
-    {value: 'Капсулы', viewValue: 'Капсулы'},
-    {value: 'Карандаш', viewValue: 'Карандаш'},
-    {value: 'Пакет', viewValue: 'Пакет'},
-    {value: 'Пачка', viewValue: 'Пачка'},
-    {value: 'Раствор', viewValue: 'Раствор'},
-    {value: 'Саше', viewValue: 'Саше'},
-    {value: 'Свечи', viewValue: 'Свечи'},
-    {value: 'Стрип', viewValue: 'Стрип'},
-    {value: 'Субстанції', viewValue: 'Субстанції'},
-    {value: 'Таблетки', viewValue: 'Таблетки'},
-    {value: 'Фильтр-пакет', viewValue: 'Фильтр-пакет'},
-    {value: 'Флакон', viewValue: 'Флакон'}
+    { value: 'Ампулы', viewValue: 'Ампулы' },
+    { value: 'Блистер', viewValue: 'Блистер' },
+    { value: 'Драже', viewValue: 'Драже' },
+    { value: 'Капли', viewValue: 'Капли' },
+    { value: 'Капсулы', viewValue: 'Капсулы' },
+    { value: 'Карандаш', viewValue: 'Карандаш' },
+    { value: 'Пакет', viewValue: 'Пакет' },
+    { value: 'Пачка', viewValue: 'Пачка' },
+    { value: 'Раствор', viewValue: 'Раствор' },
+    { value: 'Саше', viewValue: 'Саше' },
+    { value: 'Свечи', viewValue: 'Свечи' },
+    { value: 'Стрип', viewValue: 'Стрип' },
+    { value: 'Субстанції', viewValue: 'Субстанції' },
+    { value: 'Таблетки', viewValue: 'Таблетки' },
+    { value: 'Фильтр-пакет', viewValue: 'Фильтр-пакет' },
+    { value: 'Флакон', viewValue: 'Флакон' }
   ];
 
   drugsList: Array<any> = [];
@@ -72,7 +72,7 @@ export class DrugsComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-    
+
     const searchResponse = {
       name: this.f.name_input.value,
       type: this.f.category_select.value,
