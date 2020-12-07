@@ -38,7 +38,6 @@
    max-height: initial;
   }
 
-
   
 
   .info{
@@ -52,6 +51,10 @@
     display: none;
   }
 
+  .example-form-field {
+    width: 200px;
+  }
+  
   .info, .p {
    font-size: 15pt;
   }

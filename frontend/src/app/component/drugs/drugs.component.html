@@ -156,22 +156,52 @@
     </mat-grid-list> -->
 
 
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Введіть назву лікарського засобу" id="txtSearch" />
-      <div class="input-group-btn">
-          <button class="btn btn-primary" type="button" style="margin-left: 10px;">Пошук</button>
-          </div>
-          </div>
+    
+
+         
 
     <div class="container">
       <div class="row">
-      <div class="col-md-12" style="margin-top: 20px;">
+        <div class="col-md-2" style="margin-top: 20px;">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Введіть назву лікарського засобу" id="txtSearch" />
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="button" style="margin-left: 10px;">Пошук</button>
+                </div>
+                </div>
+
+                <form class="example-form" style="margin-top: 20px;">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Мін. Ціна</mat-label>
+                    <input matInput placeholder="0" value="0">
+                  </mat-form-field>
+                </form>
+
+                  <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Макс. Ціна</mat-label>
+                      <input matInput placeholder="0" value="0">
+                    </mat-form-field>
+                    </form>
+
+                    <h3>Оберіть категорію</h3>
+              <mat-form-field appearance="fill">
+  <mat-label>Категорія</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let drugs of drugs" [value]="drugs.value">
+      {{drugs.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+        </div>
+      <div class="col-md-10" style="margin-top: 20px;">
         <mat-tab-group>
           <mat-tab label="Антибіотики">
             <ng-template matTabContent>
               <div class="row">
               <div class="col-md-2" style="margin-top: 40px;">
-                <mat-card class="example-card">
+                <mat-card class="example-card">  <!--  TODO  -->
                   <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -187,7 +217,7 @@
     
               </div>
                 <div class="col-md-2" style="margin-top: 40px;">
-                  <mat-card class="example-card">
+                  <mat-card class="example-card">  <!--  TODO  -->
                     <mat-card-header>
                       <div mat-card-avatar class="example-header-image"></div>
                       <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -202,7 +232,7 @@
                   </mat-card>
                   </div>
                   <div class="col-md-2" style="margin-top: 40px;">
-                    <mat-card class="example-card">
+                    <mat-card class="example-card">  <!--  TODO  -->
                       <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -217,7 +247,7 @@
                     </mat-card>
                     </div>
                     <div class="col-md-2" style="margin-top: 40px;">
-                      <mat-card class="example-card">
+                      <mat-card class="example-card">  <!--  TODO  -->
                         <mat-card-header>
                           <div mat-card-avatar class="example-header-image"></div>
                           <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -232,7 +262,7 @@
                       </mat-card>
                       </div>
                       <div class="col-md-2" style="margin-top: 40px;">
-                        <mat-card class="example-card">
+                        <mat-card class="example-card">  <!--  TODO  -->
                           <mat-card-header>
                             <div mat-card-avatar class="example-header-image"></div>
                             <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -247,7 +277,7 @@
                         </mat-card>
                         </div>
                         <div class="col-md-2" style="margin-top: 40px;">
-                          <mat-card class="example-card">
+                          <mat-card class="example-card">  <!--  TODO  -->
                             <mat-card-header>
                               <div mat-card-avatar class="example-header-image"></div>
                               <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -262,7 +292,7 @@
                           </mat-card>
                           </div>
                           <div class="col-md-2" style="margin-top: 40px;">
-                            <mat-card class="example-card">
+                            <mat-card class="example-card">  <!--  TODO  -->
                               <mat-card-header>
                                 <div mat-card-avatar class="example-header-image"></div>
                                 <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -277,7 +307,7 @@
                             </mat-card>
                             </div>
                             <div class="col-md-2" style="margin-top: 40px;">
-                              <mat-card class="example-card">
+                              <mat-card class="example-card"> <!--  TODO  -->
                                 <mat-card-header>
                                   <div mat-card-avatar class="example-header-image"></div>
                                   <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -292,7 +322,7 @@
                               </mat-card>
                               </div>
                               <div class="col-md-2" style="margin-top: 40px;">
-                                <mat-card class="example-card">
+                                <mat-card class="example-card"> <!--  TODO  -->
                                   <mat-card-header>
                                     <div mat-card-avatar class="example-header-image"></div>
                                     <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -307,7 +337,7 @@
                                 </mat-card>
                                 </div>
                                 <div class="col-md-2" style="margin-top: 40px;">
-                                  <mat-card class="example-card">
+                                  <mat-card class="example-card"> <!--  TODO  -->
                                     <mat-card-header>
                                       <div mat-card-avatar class="example-header-image"></div>
                                       <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -322,7 +352,7 @@
                                   </mat-card>
                                   </div>
                                   <div class="col-md-2" style="margin-top: 40px;">
-                                    <mat-card class="example-card">
+                                    <mat-card class="example-card"> <!--  TODO  -->
                                       <mat-card-header>
                                         <div mat-card-avatar class="example-header-image"></div>
                                         <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -337,7 +367,7 @@
                                     </mat-card>
                                     </div>
                                     <div class="col-md-2" style="margin-top: 40px;">
-                                      <mat-card class="example-card">
+                                      <mat-card class="example-card"> <!--  TODO  -->
                                         <mat-card-header>
                                           <div mat-card-avatar class="example-header-image"></div>
                                           <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -352,7 +382,7 @@
                                       </mat-card>
                                       </div>
                           <div class="col-md-2" style="margin-top: 40px;">
-                            <mat-card class="example-card">
+                            <mat-card class="example-card"> <!--  TODO  -->
                               <mat-card-header>
                                 <div mat-card-avatar class="example-header-image"></div>
                                 <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -367,7 +397,7 @@
                             </mat-card>
                             </div>
                             <div class="col-md-2" style="margin-top: 40px;">
-                              <mat-card class="example-card">
+                              <mat-card class="example-card"> <!--  TODO  -->
                                 <mat-card-header>
                                   <div mat-card-avatar class="example-header-image"></div>
                                   <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -382,7 +412,7 @@
                               </mat-card>
                               </div>
                               <div class="col-md-2" style="margin-top: 40px;">
-                                <mat-card class="example-card">
+                                <mat-card class="example-card"> <!--  TODO  -->
                                   <mat-card-header>
                                     <div mat-card-avatar class="example-header-image"></div>
                                     <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
@@ -403,7 +433,7 @@
             <ng-template matTabContent>
               <div class="row">
               <div class="col-md-2" style="margin-top: 40px;">
-                <mat-card class="example-card">
+                <mat-card class="example-card"> <!--  TODO  -->
               <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -417,7 +447,7 @@
             </mat-card>
           </div>
           <div class="col-md-2" style="margin-top: 40px;">
-            <mat-card class="example-card">
+            <mat-card class="example-card"> <!--  TODO  -->
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -431,7 +461,7 @@
         </mat-card>
       </div>
       <div class="col-md-2" style="margin-top: 40px;">
-        <mat-card class="example-card">
+        <mat-card class="example-card"> <!--  TODO  -->
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -445,7 +475,7 @@
     </mat-card>
   </div>
   <div class="col-md-2" style="margin-top: 40px;">
-    <mat-card class="example-card">
+    <mat-card class="example-card"> <!--  TODO  -->
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -459,7 +489,7 @@
 </mat-card>
 </div>
 <div class="col-md-2" style="margin-top: 40px;">
-  <mat-card class="example-card">
+  <mat-card class="example-card"> <!--  TODO  -->
 <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -474,7 +504,7 @@
 </mat-card>
 </div>
 <div class="col-md-2" style="margin-top: 40px;">
-  <mat-card class="example-card">
+  <mat-card class="example-card"> <!--  TODO  -->
 <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -489,7 +519,7 @@
 </mat-card>
 </div>
 <div class="col-md-2" style="margin-top: 40px;">
-  <mat-card class="example-card">
+  <mat-card class="example-card"> <!--  TODO  -->
 <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -503,7 +533,7 @@
 </mat-card>
 </div>
 <div class="col-md-2" style="margin-top: 40px;">
-  <mat-card class="example-card">
+  <mat-card class="example-card"> <!--  TODO  -->
 <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -517,7 +547,7 @@
 </mat-card>
 </div>
 <div class="col-md-2" style="margin-top: 40px;">
-  <mat-card class="example-card">
+  <mat-card class="example-card"> <!--  TODO  -->
 <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -531,7 +561,7 @@
 </mat-card>
 </div>
 <div class="col-md-2" style="margin-top: 40px;">
-  <mat-card class="example-card">
+  <mat-card class="example-card">  <!--  TODO  -->
 <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -545,7 +575,7 @@
 </mat-card>
 </div>
 <div class="col-md-2" style="margin-top: 40px;">
-  <mat-card class="example-card">
+  <mat-card class="example-card">  <!--  TODO  -->
 <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -559,7 +589,7 @@
 </mat-card>
 </div>
 <div class="col-md-2" style="margin-top: 40px;">
-  <mat-card class="example-card">
+  <mat-card class="example-card">  <!--  TODO  -->
 <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -573,7 +603,7 @@
 </mat-card>
 </div>
 <div class="col-md-2" style="margin-top: 40px;">
-  <mat-card class="example-card">
+  <mat-card class="example-card">  <!--  TODO  -->
 <mat-card-header>
   <div mat-card-avatar class="example-header-image"></div>
   <mat-card-title><p style="font-size: 14px;">Глюкоза-дарница р-р д/ин. 20 мл №10 инструкция и цены</p></mat-card-title>
@@ -593,7 +623,7 @@
             <ng-template matTabContent>
               <div class="row">
               <div class="col-md-2" style="margin-top: 40px;">
-              <mat-card class="example-card">
+              <mat-card class="example-card">  <!--  TODO  -->
                 <mat-card-header>
                   <div mat-card-avatar class="example-header-image"></div>
                   <mat-card-title><p style="font-size: 14px;">Арфазетин сбор фильтр-пакет 1,5 г, в пачке с внутр. пакетом №20 инструкция и цены</p></mat-card-title>
@@ -607,7 +637,7 @@
               </mat-card>
               </div>
               <div class="col-md-2" style="margin-top: 40px;">
-                <mat-card class="example-card">
+                <mat-card class="example-card">  <!--  TODO  -->
                   <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title><p style="font-size: 14px;">Арфазетин сбор фильтр-пакет 1,5 г, в пачке с внутр. пакетом №20 инструкция и цены</p></mat-card-title>
@@ -621,7 +651,7 @@
                 </mat-card>
                 </div>
                 <div class="col-md-2" style="margin-top: 40px;">
-                  <mat-card class="example-card">
+                  <mat-card class="example-card">  <!--  TODO  -->
                     <mat-card-header>
                       <div mat-card-avatar class="example-header-image"></div>
                       <mat-card-title><p style="font-size: 14px;">Арфазетин сбор фильтр-пакет 1,5 г, в пачке с внутр. пакетом №20 инструкция и цены</p></mat-card-title>
@@ -635,7 +665,7 @@
                   </mat-card>
                   </div>
                   <div class="col-md-2" style="margin-top: 40px;">
-                    <mat-card class="example-card">
+                    <mat-card class="example-card">  <!--  TODO  -->
                       <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title><p style="font-size: 14px;">Арфазетин сбор фильтр-пакет 1,5 г, в пачке с внутр. пакетом №20 инструкция и цены</p></mat-card-title>
@@ -772,68 +802,9 @@
           </mat-tab>
         </mat-tab-group>
       </div>
-      <!-- <div class="col-md-2" style="margin-top: 10px;">
-        <mat-card class="example-card">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="https://liki24.com/image/cache/catalog/product/found/14016-5-ftoruracil-ebeve-konc-dp-inf-r-ra-500-mg-amp-10-ml-ebewe-pharma-362x362.jpg?30112018" alt="Photo of a Shiba Inu" style="width: 200px; height: 200px;">
-        </mat-card>
-        <div class="info"><p>5-фторурацил "эбеве" описание
-          Лекарственное средство: 5-ФТОРУРАЦИЛ "ЭБЕВЕ" (5-FLUOROURACIL "EBEWE")
-          Форма выпуска: концентрат д/п инф. р-ра
-          Группа: антиметаболиты
-          Подгруппа: структурные аналоги пиримидина
-          Состав: Флуороурацил - 50 мг/5 м (FLUOROURACILUM)</p></div>
+      </div> 
       </div>
-      <div class="col-md-2" style="margin-top: 10px;">
-        <mat-card class="example-card">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="https://liki24.com/image/cache/catalog/product/found/14016-5-ftoruracil-ebeve-konc-dp-inf-r-ra-500-mg-amp-10-ml-ebewe-pharma-362x362.jpg?30112018" alt="Photo of a Shiba Inu" style="width: 200px; height: 200px;">
-        </mat-card>
-        <div class="info"><p>5-фторурацил "эбеве" описание
-          Лекарственное средство: 5-ФТОРУРАЦИЛ "ЭБЕВЕ" (5-FLUOROURACIL "EBEWE")
-          Форма выпуска: концентрат д/п инф. р-ра
-          Группа: антиметаболиты
-          Подгруппа: структурные аналоги пиримидина
-          Состав: Флуороурацил - 50 мг/5 м (FLUOROURACILUM)</p></div>
-       </div>
-       <div class="col-md-2" style="margin-top: 10px;">
-        <mat-card class="example-card">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="https://liki24.com/image/cache/catalog/product/found/14016-5-ftoruracil-ebeve-konc-dp-inf-r-ra-500-mg-amp-10-ml-ebewe-pharma-362x362.jpg?30112018" alt="Photo of a Shiba Inu" style="width: 200px; height: 200px;">
-        </mat-card>
-        <div class="info"><p>5-фторурацил "эбеве" описание
-          Лекарственное средство: 5-ФТОРУРАЦИЛ "ЭБЕВЕ" (5-FLUOROURACIL "EBEWE")
-          Форма выпуска: концентрат д/п инф. р-ра
-          Группа: антиметаболиты
-          Подгруппа: структурные аналоги пиримидина
-          Состав: Флуороурацил - 50 мг/5 м (FLUOROURACILUM)</p></div>
-         </div>
-         <div class="col-md-2" style="margin-top: 10px;">
-          <mat-card class="example-card">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title><p style="font-size: 14px;">5-фторурацил "эбеве" конц. д/п инф. р-ра 500 мг амп. 10 мл</p></mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="https://liki24.com/image/cache/catalog/product/found/14016-5-ftoruracil-ebeve-konc-dp-inf-r-ra-500-mg-amp-10-ml-ebewe-pharma-362x362.jpg?30112018" alt="Photo of a Shiba Inu" style="width: 200px; height: 200px;">
-          </mat-card>
-          <div class="info"><p>5-фторурацил "эбеве" описание
-            Лекарственное средство: 5-ФТОРУРАЦИЛ "ЭБЕВЕ" (5-FLUOROURACIL "EBEWE")
-            Форма выпуска: концентрат д/п инф. р-ра
-            Группа: антиметаболиты
-            Подгруппа: структурные аналоги пиримидина
-            Состав: Флуороурацил - 50 мг/5 м (FLUOROURACILUM)</p></div>
-           </div>
-      </div>
-      </div> -->
+      
 
       
     <footer class="page-footer font-small blue">
