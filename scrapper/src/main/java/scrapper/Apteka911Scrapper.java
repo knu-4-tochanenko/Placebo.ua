@@ -83,9 +83,9 @@ public class Apteka911Scrapper implements Scrapper {
         String pageTitle = doc.title();
         Drug drug = new Drug();
         drug.setName(pageTitle.substring(0, pageTitle.indexOf(" -")));
-        drug.setDescription(params.get("Форма выпуска"));
+        drug.setDescription(params.get("Категория"));
         drug.setPrice(price);
-        drug.setType(params.get("Категория"));
+        drug.setType(params.get("Вид упаковки"));
         drug.setImageUrl(doc.select(".cboxElement").attr("href"));
         drug.setStoreUrl(url);
 

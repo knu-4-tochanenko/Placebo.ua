@@ -66,7 +66,7 @@ public class PigulkaScrapper implements Scrapper {
         drug.setName(params.get("Міжнародне непатентоване найменування"));
         drug.setDescription(params.get("Форма випуску"));
         drug.setPrice(0.0);
-        drug.setType(params.get("Фармакотерапевтична група"));
+        drug.setType(params.get("Фармакотерапевтична група").replace(".", ""));
         drug.setImageUrl("");
         drug.setStoreUrl(url);
 
