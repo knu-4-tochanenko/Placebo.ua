@@ -17,6 +17,10 @@ The server will be running on port 8989
 ## Endpoints
 ### Get drugs
 Request method: GET<br>
+Request url:<br>
+```
+/drugs
+```
 Query params:<br>
 - sort: Sort drugs by (type, name, price) asc or desc
 - page: Page to return number
@@ -34,6 +38,7 @@ Request body:
 
 #### Examples:
 1. Normal flow<br>
+
 Request url:
 ```
 /drugs?sort=type&sort=name,desc&page=0&size=2
@@ -126,12 +131,52 @@ Response body:
     "message": "Something went wrong..."
 }
 ```
+### Get drug by id
+Request method: GET<br>
+Path variable:<br>
+- id: Drug to return id
+
+#### Examples:
+1. Drug exists<br>
+
+Request url:
+```
+/drugs/2
+```
+Response code: 200<br>
+Response body:
+```json
+{
+  "id": 2,
+  "name": "Abilify",
+  "type": "MENTAL",
+  "description": "Drug that cures mental diseases",
+  "price": 52.00,
+  "storeUrl": "https://www.northwestpharmacy.com/product/abilify",
+  "imageUrl": "https://d.newsweek.com/en/full/269301/09-09-abilify.jpg?w=1600&h=1200&q=88&f=2501af28b5bf35ecbbbd77ff77491aachttps://d.newsweek.com/en/full/269301/09-09-abilify.jpg?w=1600&h=1200&q=88&f=2501af28b5bf35ecbbbd77ff77491aac"
+}
+```
+2. Drug does not exist<br>
+
+Request url:
+```
+/drugs/6
+```
+Response code: 404<br>
+Response body:
+```json
+{
+   "message": "Drug with id 6 is not found"
+}
+```
+
 ### Get drug types
+Request method: GET<br>
 Request url:
 ```
 /drugs/types
 ```
-Response:
+Response example:
 ```json
 [
     "HEART",

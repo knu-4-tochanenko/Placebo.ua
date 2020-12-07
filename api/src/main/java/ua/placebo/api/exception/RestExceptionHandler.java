@@ -30,4 +30,10 @@ public class RestExceptionHandler {
   public RestError handleOtherExceptions(Exception ex) {
     return new RestError(ex.getMessage());
   }
+
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  @ExceptionHandler(DrugNotFoundException.class)
+  public RestError handleDrugNotFound(DrugNotFoundException ex) {
+    return new RestError(ex.getMessage());
+  }
 }

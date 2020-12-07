@@ -12,4 +12,6 @@ public interface DrugService {
   Page<DrugDto> searchDrugs(DrugFilter filter, Pageable pageable);
 
   List<String> getDrugTypes();
+
+  DrugDto getDrugById(Long id);
 }
