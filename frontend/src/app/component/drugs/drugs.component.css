@@ -1,0 +1,93 @@
+.example-container {
+    width: inherit;
+    height: 1000px;
+    margin: 10px;
+  }
+  
+
+  .example-card {
+    position:relative;
+    margin-left: 5px;
+    text-align: center;
+    max-width: 300px;
+    max-height: 300px;
+  }
+  
+  mat-card-image{
+    text-align: center;
+    object-fit: cover; /*this makes de image in src fit to the size of specified below*/
+    width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 50%;
+  }
+
+  mat-grid-tile {
+      margin: 20px;
+  }
+  
+
+  mat-card img{
+    text-align: center;
+    object-fit: cover; /*this makes de image in src fit to the size of specified below*/
+    width: 50%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 70%;
+  }
+
+  .container {
+    padding-top: 0%;
+   max-width: initial;
+   max-height: initial;
+  }
+
+  
+
+  .info{
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+    top:0;
+    background:rgba(106, 231, 183, 0.9);
+    padding:5px;
+    display: none;
+  }
+
+  .example-form-field {
+    width: 200px;
+  }
+  
+  .info, .p {
+   font-size: 15pt;
+  }
+
+  .example-card:hover .info{
+    display: block;
+    margin-left: 10px;
+    font-size: 10px;
+  }
+
+  p, h1, h2 {
+    font-family: 'Raleway', sans-serif; 
+  }
+
+  .mat-toolbar.mat-primary {
+    background: #343837;
+    color: rgb(255, 255, 255);
+  }
+
+  
+
+  a {
+    text-decoration: none;
+    
+  }
+
+
+  .page-footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    background-color: #ffffff;
+  }
+ 
