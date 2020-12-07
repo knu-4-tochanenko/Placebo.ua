@@ -59,6 +59,7 @@ import { AboutComponent } from './component/about/about.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { MainComponent } from './component/main/main.component';
+import { DruginfoComponent } from './component/druginfo/druginfo.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { MainComponent } from './component/main/main.component';
     HeaderComponent,
     FooterComponent,
     MainComponent,
+    DruginfoComponent,
   ],
   imports: [
     BrowserModule,

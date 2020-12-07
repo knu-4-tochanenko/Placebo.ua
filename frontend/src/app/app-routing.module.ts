@@ -6,6 +6,8 @@ import { AboutComponent } from './component/about/about.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { MainComponent } from './component/main/main.component';
+import { DruginfoComponent } from './component/druginfo/druginfo.component';
+
 
 
 
@@ -16,6 +18,7 @@ const routes: Routes = [
   {path: 'drugs', component: DrugsComponent},
   {path: 'about', component: AboutComponent},
   {path: 'footer', component: FooterComponent},
+  {path: 'druginfo', component: DruginfoComponent},
   {path: 'header', component: HeaderComponent},
 ];
 
