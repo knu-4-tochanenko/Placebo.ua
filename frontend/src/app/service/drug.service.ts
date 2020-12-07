@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,7 +6,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-const API = 'http://localhost:8989/api';
+const API = 'https://placebo-api.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'
@@ -16,31 +16,20 @@ export class DrugService {
   constructor(private http: HttpClient) {
   }
 
-  getDrugs(data: any, settings: any): Observable<any> {
-    let queryString = '?page=' + settings['page'] + '&size=' + settings['size'];
-    if (settings['sortType']) {
-      queryString += '&sort=type' + (settings['ascSort'] ? '' : ',desc');
-    }
-    if (settings['sortName']) {
-      queryString += '&sort=name' + (settings['ascName'] ? '' : ',desc');
-    }
-    if (settings['sortPrice']) {
-      queryString += '&sort=price' + (settings['ascPrice'] ? '' : ',desc');
-    }
-
-    return this.http.get(API + queryString, data);
-  }
-
-  searchDrugs(data: any): Observable<any> {
-    return this.http.get(API + 'drugs', data);
-  }
-
   getTypes(): Observable<any> {
-    return this.http.get(API + 'drugs/types');
+    return this.http.get(`${API}/drugs/types`, httpOptions);
   }
 
-  getById(id: any): Observable<any> {
-    return this.http.get(API + '/drug?id=' + id, httpOptions);
+  getDrugs(reqBody: any, page: number, size: number = 20): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('page', page.toString());
+    params = params.append('size', size.toString());
+
+    return this.http.post(`${API}/drugs`, reqBody, {params});
+  }
+
+  getDrugById(id: any): Observable<any> {
+    return this.http.get(`${API}/drugs/${id}`, httpOptions);
   }
 
 }

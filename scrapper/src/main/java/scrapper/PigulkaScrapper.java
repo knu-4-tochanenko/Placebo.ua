@@ -25,7 +25,12 @@ public class PigulkaScrapper implements Scrapper {
             ArrayList<String> drugUrls = findDrugs("https://pigulka.com.ua/ukraina" + (i > 0 ? "?page=" + (i - 1) : ""));
 
             for (String url : drugUrls) {
-                DrugDAO.insert(parseDrug(url));
+                try {
+                    DrugDAO.insert(parseDrug(url));
+                } catch (IOException e) {
+                    System.err.println("ERROR WHILE PARSING " + url);
+                    System.out.println("PARSING SKIPPED\n");
+                }
             }
         }
     }
@@ -48,14 +53,10 @@ public class PigulkaScrapper implements Scrapper {
         return drugUrls;
     }
 
-    private Drug parseDrug(String url) {
+    private Drug parseDrug(String url) throws IOException {
 
         Document doc = null;
-        try {
-            doc = Jsoup.connect(url).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        doc = Jsoup.connect(url).get();
         Elements propertiesInDom = doc.select(".field--label-inline");
         Map<String, String> params = new HashMap<>();
         for (Element property : propertiesInDom) {
@@ -66,7 +67,14 @@ public class PigulkaScrapper implements Scrapper {
         drug.setName(params.get("Міжнародне непатентоване найменування"));
         drug.setDescription(params.get("Форма випуску"));
         drug.setPrice(0.0);
-        drug.setType(params.get("Фармакотерапевтична група").replace(".", ""));
+        String type = "Стандартно";
+        if (params.get("Фармакотерапевтична група") != null) {
+            type = params.get("Фармакотерапевтична група").replace(".", "");
+            if (type.contains(" ")) {
+                type = type.substring(0, type.indexOf(" "));
+            }
+        }
+        drug.setType(type);
         drug.setImageUrl("");
         drug.setStoreUrl(url);
 

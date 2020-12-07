@@ -35,7 +35,15 @@ public class AddScrapper implements Scrapper {
             ArrayList<String> drugUrls = findDrugs("https://www.add.ua/medicamenti/?dir=asc&order=name" + (i > 0 ? "&p=" + (i + 1) : ""));
 
             for (String url : drugUrls) {
-                DrugDAO.insert(parseDrug(url));
+                if (url.equals("https://www.add.ua/solgar.html"))
+                    continue;
+
+                try {
+                    DrugDAO.insert(parseDrug(url));
+                } catch (IOException e) {
+                    System.err.println("ERROR WHILE PARSING " + url);
+                    System.out.println("PARSING SKIPPED\n");
+                }
             }
         }
     }
@@ -61,13 +69,9 @@ public class AddScrapper implements Scrapper {
         return drugUrls;
     }
 
-    private Drug parseDrug(String url) {
+    private Drug parseDrug(String url) throws IOException {
         Document doc = null;
-        try {
-            doc = Jsoup.connect(url).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        doc = Jsoup.connect(url).get();
         Elements propertiesInDom = doc.select("#product-attribute-specs-table tbody tr");
         Map<String, String> params = new HashMap<>();
 
@@ -83,10 +87,14 @@ public class AddScrapper implements Scrapper {
 
         String title = doc.title();
         Drug drug = new Drug();
-        drug.setName(title.substring(0, title.indexOf(" -")));
+        if (!title.contains(" -")) {
+            drug.setName(title);
+        } else {
+            drug.setName(title.substring(0, title.indexOf(" -")));
+        }
         drug.setDescription(params.get("Назначение") == null ? "" : params.get("Назначение"));
         drug.setPrice(parseDouble(doc.select(".regular-price span").html()));
-        drug.setType(params.get("Форма товара"));
+        drug.setType(params.get("Форма товара") == null ? "Стандартно" : params.get("Форма товара"));
         drug.setImageUrl(doc.select("#image-main").attr("data-src"));
         drug.setStoreUrl(url);
 

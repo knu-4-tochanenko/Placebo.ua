@@ -25,7 +25,12 @@ public class Apteka911Scrapper implements Scrapper {
             ArrayList<String> drugUrls = findDrugs("https://apteka911.com.ua/shop/lekarstvennyie-preparatyi/prostuda_i_gripp/" + (i > 0 ? "page=" + (i + 1) : ""));
 
             for (String url : drugUrls) {
-                DrugDAO.insert(parseDrug(url));
+                try {
+                    DrugDAO.insert(parseDrug(url));
+                } catch (IOException e) {
+                    System.err.println("ERROR WHILE PARSING " + url);
+                    System.out.println("PARSING SKIPPED\n");
+                }
             }
         }
     }
@@ -49,14 +54,9 @@ public class Apteka911Scrapper implements Scrapper {
         return drugUrls;
     }
 
-    private Drug parseDrug(String url) {
-
+    private Drug parseDrug(String url) throws IOException {
         Document doc = null;
-        try {
-            doc = Jsoup.connect(url).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        doc = Jsoup.connect(url).get();
 
         String priceStr = doc.select(".card-price .price-new").html();
         double price = Double.parseDouble(priceStr.substring(0, priceStr.indexOf(" ")));
@@ -82,10 +82,14 @@ public class Apteka911Scrapper implements Scrapper {
 
         String pageTitle = doc.title();
         Drug drug = new Drug();
-        drug.setName(pageTitle.substring(0, pageTitle.indexOf(" -")));
+        if (!pageTitle.contains(" -")) {
+            drug.setName(pageTitle);
+        } else {
+            drug.setName(pageTitle.substring(0, pageTitle.indexOf(" -")));
+        }
         drug.setDescription(params.get("Категория"));
         drug.setPrice(price);
-        drug.setType(params.get("Вид упаковки"));
+        drug.setType(params.get("Вид упаковки") == null ? "Стандартно" : params.get("Вид упаковки"));
         drug.setImageUrl(doc.select(".cboxElement").attr("href"));
         drug.setStoreUrl(url);
 
